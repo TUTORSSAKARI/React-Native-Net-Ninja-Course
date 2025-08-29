@@ -1,26 +1,38 @@
-import { StyleSheet, Text, Image } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import { Link } from 'expo-router'
 
 
-import Logo from '../assets/img/Logo_light.png'
+// Complete React Native Tutorial #7 - Route Groups & Nested Layouts alusta alkaen.
 
 
 import ThemedView from '../components/ThemedView'
+import ThemedLogo from '../components/ThemedLogo'
+import ThemedText from '../components/ThemedText'
+import Spacer from '../components/Spacer'
 
 function Home() {
   return (
     <ThemedView style={styles.container}>
 
-      <Image source={Logo} style={styles.img} />
+      <ThemedLogo />
+      <Spacer height={20} />
 
-      <Text style={styles.title}>The Number 1</Text>
+      <ThemedText style={styles.title} title={true}>
+        The Number 1
+      </ThemedText>
 
-      <Text style={{ marginTop: 10, marginBottom: 30 }}>
-        Reading List App
-      </Text>
+      <Spacer height={10} />
 
-      <Link href="/about" style={styles.link}>About Page</Link>
-      <Link href="/contact" style={styles.link}>Contact Page</Link>
+      <ThemedText>Reading List App</ThemedText>
+
+      <Spacer />
+
+      <Link href="/about" style={styles.link}>
+      <ThemedText>About Page</ThemedText>
+      </Link>
+      <Link href="/contact" style={styles.link}>
+      <ThemedText>Contact Page</ThemedText>
+      </Link>
 
     </ThemedView>
   )
@@ -37,9 +49,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 18
-  },
-  img: {
-    marginVertical: 20,
   },
   link: {
     marginVertical: 10,
