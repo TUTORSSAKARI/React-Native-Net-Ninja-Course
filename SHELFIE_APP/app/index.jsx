@@ -2,7 +2,7 @@ import { StyleSheet, Text } from 'react-native'
 import { Link } from 'expo-router'
 
 
-// Complete React Native Tutorial #7 - Route Groups & Nested Layouts alusta alkaen.
+// Complete React Native Tutorial #13 - Tabs Navigation kohdasta 7:25 ->
 
 
 import ThemedView from '../components/ThemedView'
@@ -32,6 +32,9 @@ function Home() {
       </Link>
       <Link href="/contact" style={styles.link}>
       <ThemedText>Contact Page</ThemedText>
+      </Link>
+      <Link href="/profile" style={styles.link}>
+      <ThemedText>Profile Page</ThemedText>
       </Link>
 
     </ThemedView>

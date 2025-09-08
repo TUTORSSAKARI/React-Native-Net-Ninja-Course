@@ -19,5 +19,5 @@ const ThemedLogo = ({ ...props }) => {
   )
 }
 
-export default ThemedLogo
+export default ThemedLogo;
 
