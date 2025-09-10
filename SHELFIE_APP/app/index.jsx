@@ -2,7 +2,7 @@ import { StyleSheet, Text } from 'react-native'
 import { Link } from 'expo-router'
 
 
-// Complete React Native Tutorial #13 - Tabs Navigation kohdasta 7:25 ->
+// Complete React Native Tutorial #15 - Logging Users In alusta alkaen
 
 
 import ThemedView from '../components/ThemedView'

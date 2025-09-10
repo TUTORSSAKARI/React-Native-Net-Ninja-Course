@@ -1,55 +1,76 @@
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { Link } from 'expo-router'
+import { Colors } from '../../constants/Colors'
+import { useState } from 'react'
 
 // Themed components
 import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import ThemedButton from '../../components/ThemedButton'
+import ThemedTextInput from '../../components/ThemedTextInput'
 import Spacer from '../../components/Spacer'
 
-
 const Register = () => {
+  // Hookit pitää olla tässä, ei handleSubmitin sisällä
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-    const handleSubmit = () => {
-        console.log('Register from submitted')
-    }
- 
-    return (
-    <ThemedView style={styles.container}>
-    
-    <Spacer />
-    <ThemedText title={true} style={styles.title}>
-        Register For an Account
-    </ThemedText>
+  const handleSubmit = () => {
+    console.log('Register form submitted', email, password)
+    // Tässä voisi olla API-kutsu tms.
+  }
 
-    <ThemedButton onPress={handleSubmit}>
-        <Text style={{ color: '#f2f2f2'}}>Register</Text>
-    </ThemedButton>
+  return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ThemedView style={styles.container}>
+        <Spacer />
+        <ThemedText title={true} style={styles.title}>
+            Register For an Account
+        </ThemedText>
 
-    <Spacer height={100} />
+        <ThemedTextInput
+            style={{ width: '80%', marginBottom: 20 }}
+            placeholder="Email"
+            keyboardType="email-address"
+            onChangeText={setEmail}
+            value={email}
+        />
 
-    <Link href={'/login'}>
-    <ThemedText style={{textAlign: 'center' }}>
-        Login instead
-    </ThemedText>
-    </Link>
+        <ThemedTextInput
+            style={{ width: '80%', marginBottom: 20 }}
+            placeholder="Password"
+            onChangeText={setPassword}
+            value={password}
+            secureTextEntry
+        />
 
-    </ThemedView>
+        <ThemedButton onPress={handleSubmit}>
+            <Text style={{ color: '#f2f2f2' }}>Register</Text>
+        </ThemedButton>
+
+        <Spacer height={100} />
+
+        <Link href={'/login'}>
+            <ThemedText style={{ textAlign: 'center' }}>
+            Login instead
+            </ThemedText>
+        </Link>
+        </ThemedView>
+    </TouchableWithoutFeedback>
   )
 }
 
 export default Register
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    title: {
-        textAlign: 'center',
-        fontSize: 18,
-        marginBottom: 30,
-    },
-
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 18,
+    marginBottom: 30,
+  },
 })
